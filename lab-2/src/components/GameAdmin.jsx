@@ -60,7 +60,7 @@ class GameAdmin extends React.Component {
 				<hr />
 				<label>
 					Player One name:
-					<input type="text" value={this.state.nameOne} onChange={this.handleNameOneChange} />
+					<input type="text" value={this.state.nameOne} onChange={this.handleNameOneChange()} />
 				</label>
 				<br/>
 				<label>

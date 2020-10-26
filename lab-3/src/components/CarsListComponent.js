@@ -11,6 +11,7 @@ class CarsListComponent extends React.Component {
 		};
 		this.changePrice = this.changePrice.bind(this);
 		this.onSearchInput = this.onSearchInput.bind(this);
+		this.onDeleteButtonClicked = this.onDeleteButtonClicked.bind(this);
 	}
 
 	changePrice(event, index) {
@@ -24,6 +25,13 @@ class CarsListComponent extends React.Component {
 	onSearchInput(e) {
 		this.setState({
 			searchValue: e.target.value
+		});
+	}
+
+	onDeleteButtonClicked(index) {
+		const carsChanged = [...this.state.cars].filter(car => car !== this.state.cars[index]);
+		this.setState({
+			cars: carsChanged
 		});
 	}
 
@@ -41,6 +49,7 @@ class CarsListComponent extends React.Component {
 								price={car.pricePerDay}
 								index={index}
 								onPriceChange={this.changePrice}
+								onDelete={this.onDeleteButtonClicked}
 							/>
 						})
 				}

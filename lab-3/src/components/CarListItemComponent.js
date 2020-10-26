@@ -9,6 +9,8 @@ function CarListItemComponent(props) {
 			value={props.price} 
 			onChange={e => props.onPriceChange(e, props.index)}
 		/>
+		<button onClick={()=>props.onDelete(props.index)}>Delete me</button>
+		<hr/>
 	</div>
 	);
 }

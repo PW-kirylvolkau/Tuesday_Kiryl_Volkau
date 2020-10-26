@@ -6,29 +6,43 @@ class CarsListComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			cars: data
+			cars: data,
+			searchValue: ""
 		};
 		this.changePrice = this.changePrice.bind(this);
+		this.onSearchInput = this.onSearchInput.bind(this);
 	}
 
-	changePrice(event, index){
+	changePrice(event, index) {
 		const carsChanged = [...this.state.cars];
-		console.log(carsChanged);
-		console.log(index);
 		carsChanged[index].pricePerDay = event.target.value;
 		this.setState({
 			cars: carsChanged
 		});
 	}
 
+	onSearchInput(e) {
+		this.setState({
+			searchValue: e.target.value
+		});
+	}
+
 	render() {
-		console.log('jsx', this.state)
-		return(
+		console.log(this.state);
+		return (
 			<div>
+				<input type="text" placeholder="Name of the car"  onChange={this.onSearchInput}/>
 				{
-					this.state.cars.map( (car, index) => {
-						return <CarListItemComponent name={car.name} price={car.pricePerDay} index={index} onPriceChange={this.changePrice}/>
-					})
+					this.state.cars
+						.filter(car => car.name.toLowerCase().includes(this.state.searchValue))
+						.map((car, index) => {
+							return <CarListItemComponent
+								name={car.name}
+								price={car.pricePerDay}
+								index={index}
+								onPriceChange={this.changePrice}
+							/>
+						})
 				}
 			</div>
 		)

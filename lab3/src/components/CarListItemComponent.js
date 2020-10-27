@@ -37,25 +37,20 @@ class CarListItemComponent extends React.Component {
 					<div className="col-sm-4"></div>
 					<div className="col-sm-2">
 						<small>Price per day:</small>
-						<input
-							onChange={(e) => this.props.onPriceChange(e, this.props.index)}
-							type="number"
-							className="form-control mb-2"
-							disabled={!this.state.isEditing}
-							value={this.props.car.pricePerDay}
-							style={this.state.isEditing ? {
-								color: 'black', 
-								textAlign:'right'
-							} : {
-									border: "0px",
-									backgroundColor: 'white',
-									color: 'black',
-								}}
-						/> 
-						<button 
-							className={"btn " + (this.state.isEditing ? ' btn-success' : ' btn-primary') +  " mr-2"} 
-							onClick={() => this.switchMode()}> 
-								{this.state.isEditing ? 'Save' : 'Edit'} 
+						{this.state.isEditing &&
+							<input
+								onChange={(e) => this.props.onPriceChange(e, this.props.index)}
+								type="number"
+								className="form-control mb-2"
+								value={this.props.car.pricePerDay}
+								style={{textAlign: 'right'}}
+							/>
+						}
+						{!this.state.isEditing && <p>{this.props.car.pricePerDay} PLN</p>}
+						<button
+							className={"btn " + (this.state.isEditing ? ' btn-success' : ' btn-primary') + " mr-2"}
+							onClick={() => this.switchMode()}>
+							{this.state.isEditing ? 'Save' : 'Edit'}
 						</button>
 						<button className="btn btn-danger" onClick={() => this.props.onDelete(this.props.index)}>Delete </button>
 					</div>

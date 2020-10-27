@@ -38,15 +38,19 @@ class CarsListComponent extends React.Component {
 	render() {
 		console.log(this.state);
 		return (
-			<div>
-				<input type="text" placeholder="Name of the car"  onChange={this.onSearchInput}/>
+			<div className="container">
+				<input 
+					type="text"
+					placeholder="Search"
+					onChange={this.onSearchInput} 
+					className=" form-control-lg mt-3 ml-3"
+				/>
 				{
 					this.state.cars
-						.filter(car => car.name.toLowerCase().includes(this.state.searchValue))
+						.filter(car => car.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
 						.map((car, index) => {
 							return <CarListItemComponent
-								name={car.name}
-								price={car.pricePerDay}
+								car={car}
 								index={index}
 								onPriceChange={this.changePrice}
 								onDelete={this.onDeleteButtonClicked}

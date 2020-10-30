@@ -48,7 +48,7 @@ class CarListItemComponent extends React.Component {
 						}
 						{!this.state.isEditing && <p>{this.props.car.pricePerDay} PLN</p>}
 						<button
-							className={"btn " + (this.state.isEditing ? ' btn-success' : ' btn-primary') + " mr-2"}
+							classNamex={"btn " + (this.state.isEditing ? ' btn-success' : ' btn-primary') + " mr-2"}
 							onClick={() => this.switchMode()}>
 							{this.state.isEditing ? 'Save' : 'Edit'}
 						</button>

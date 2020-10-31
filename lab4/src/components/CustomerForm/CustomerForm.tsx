@@ -11,16 +11,18 @@ const CustomerForm: React.FC<unknown> = () => {
     // hooks for the state (data submitted in input
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
-
+    const [email, setEmail] = useState<string>('');
 
     return(
         <div>
-            <p>Customer form.</p>
             <NameStep
                 onClicked={() => setAddress(true)}
                 firstName={firstName}
                 onNameChange={(name:string) => setFirstName(name)}
                 lastName={lastName}
+                onLastNameChange={(lastName:string) => setLastName(lastName)}
+                email={email}
+                onEmailChange={(email:string) => setEmail(email)}
             />
             {address && <AddressStep onClicked={() => setSummary(true)}/>}
             {summary && <SummaryStep />}

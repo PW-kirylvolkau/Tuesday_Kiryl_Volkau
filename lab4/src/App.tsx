@@ -1,15 +1,13 @@
 import React from "react";
-import { hot } from "react-hot-loader";
-import styles from "./app.module.scss";
+import styles from "./app.module.css";
+import CustomerForm from "./components/CustomerForm/CustomerForm";
 
 const App: React.FC<unknown> = () => {
   return (
     <div className={styles.app}>
-      <p> App starter kit </p>
+        <CustomerForm />
     </div>
   );
 };
 
-declare let module: Record<string, unknown>;
-
-export default hot(module)(App);
+export default App;

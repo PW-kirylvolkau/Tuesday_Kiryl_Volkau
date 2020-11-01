@@ -1,13 +1,13 @@
 import React from 'react';
 
 interface NameStepProps {
-    onClicked: () => void,
-    onNameChange: (name: string) => void,
-    onLastNameChange: (lastName: string) => void,
-    onEmailChange: (email: string) => void,
-    firstName: string,
-    lastName: string,
-    email: string
+    onClicked: () => void;
+    onNameChange: (name: string) => void;
+    onLastNameChange: (lastName: string) => void;
+    onEmailChange: (email: string) => void;
+    firstName: string;
+    lastName: string;
+    email: string;
 }
 
 const NameStep: React.FC<NameStepProps> = (props) => {

@@ -3,6 +3,8 @@ import Address from "../../../interfaces/address";
 
 interface AddressStepProps {
     onClicked: () => void;
+    onBackClicked: () => void;
+    isBackDisabled: boolean;
     invoiceAddress: Address;
     deliveryAddress: Address;
     onDeliveryAddressChange: (fieldName: string, fieldValue: string) => void;
@@ -124,6 +126,12 @@ const AddressStep: React.FC<AddressStepProps> = (props) => {
                 disabled={!isValid()}
             >
                 Next
+            </button>
+            <button
+                disabled={props.isBackDisabled}
+                onClick={() => props.onBackClicked()}
+            >
+                Back
             </button>
         </div>
     );

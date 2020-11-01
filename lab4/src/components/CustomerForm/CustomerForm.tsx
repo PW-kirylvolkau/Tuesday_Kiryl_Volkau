@@ -54,9 +54,23 @@ const CustomerForm: React.FC<unknown> = () => {
                     invoiceAddress={invoiceAddress}
                     onDeliveryAddressChange={handleDeliveryChange}
                     onInvoiceAddressChange={handleInvoiceChange}
+                    isBackDisabled={summary}
+                    onBackClicked={() => setAddress(false)}
                 />
             }
-            {summary && <SummaryStep />}
+            {summary &&
+                <SummaryStep
+                    firstName={firstName}
+                    lastName={lastName}
+                    email={email}
+                    invoiceAddress={invoiceAddress}
+                    deliveryAddress={deliveryAddress}
+                    onAddressClicked={() => setSummary(false)}
+                    onNameClicked={() => {
+                        setSummary(false);
+                        setAddress(false);
+                    }}
+                />}
         </div>
     );
 }

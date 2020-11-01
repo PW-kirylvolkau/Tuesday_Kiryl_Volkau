@@ -52,8 +52,8 @@ const NameStep: React.FC<NameStepProps> = (props) => {
             <br/>
 
             <button
-                onClick={() => props.onClicked()}
                 disabled={!isValid()}
+                onClick={() => props.onClicked()}
             >
                 Next
             </button>

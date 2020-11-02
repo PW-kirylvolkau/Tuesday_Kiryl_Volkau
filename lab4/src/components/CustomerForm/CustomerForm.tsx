@@ -30,7 +30,7 @@ const CustomerForm: React.FC<unknown> = () => {
     }
     
     const handleInvoiceChange = (fieldName: string, fieldValue: string) => {
-        setDeliveryAddress(prevState => ({
+        setInvoiceAddress(prevState => ({
             ...prevState,
             [fieldName]: fieldValue
         }));

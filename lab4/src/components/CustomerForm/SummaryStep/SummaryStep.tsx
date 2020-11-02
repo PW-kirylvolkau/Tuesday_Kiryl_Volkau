@@ -21,15 +21,17 @@ const SummaryStep: React.FC<SummaryProps> = (props) => {
         return html;
     }
     return(
-        <div>
-            <p>Name: {props.firstName}</p>
-            <p>Surname: {props.lastName}</p>
-            <p>Email: {props.email}</p>
-            <hr/>
-            <div dangerouslySetInnerHTML={{__html: getAddressHTML('delivery')}}/>
-            <div dangerouslySetInnerHTML={{__html: getAddressHTML('invoice')}}/>
-            <button onClick={() => props.onAddressClicked()}>Go to address step.</button>
-            <button onClick={() => props.onNameClicked()}>Go to name step.</button>
+        <div className="card m-3">
+            <div className="card-body">
+                <p>Name: {props.firstName}</p>
+                <p>Surname: {props.lastName}</p>
+                <p>Email: {props.email}</p>
+                <hr/>
+                <div dangerouslySetInnerHTML={{__html: getAddressHTML('delivery')}}/>
+                <div dangerouslySetInnerHTML={{__html: getAddressHTML('invoice')}}/>
+                <button onClick={() => props.onAddressClicked()}>Go to address step.</button>
+                <button onClick={() => props.onNameClicked()}>Go to name step.</button>
+            </div>
         </div>
     );
 }

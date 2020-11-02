@@ -28,9 +28,9 @@ const CustomerForm: React.FC<unknown> = () => {
             [fieldName]: fieldValue
         }));
     }
-
+    
     const handleInvoiceChange = (fieldName: string, fieldValue: string) => {
-        setInvoiceAddress(prevState => ({
+        setDeliveryAddress(prevState => ({
             ...prevState,
             [fieldName]: fieldValue
         }));
@@ -46,31 +46,31 @@ const CustomerForm: React.FC<unknown> = () => {
                 onLastNameChange={(lastName:string) => setLastName(lastName)}
                 email={email}
                 onEmailChange={(email:string) => setEmail(email)}
+                isSubmitted={address}
             />
             {address &&
                 <AddressStep
                     onClicked={() => setSummary(true)}
                     deliveryAddress={deliveryAddress}
                     invoiceAddress={invoiceAddress}
-                    onDeliveryAddressChange={handleDeliveryChange}
-                    onInvoiceAddressChange={handleInvoiceChange}
-                    isBackDisabled={summary}
+                    isSubmitted={summary}
                     onBackClicked={() => setAddress(false)}
-                />
+                    onDeliveryAddressChange={handleDeliveryChange}
+                    onInvoiceAddressChange={handleInvoiceChange}/>
+
             }
-            {summary &&
-                <SummaryStep
-                    firstName={firstName}
-                    lastName={lastName}
-                    email={email}
-                    invoiceAddress={invoiceAddress}
-                    deliveryAddress={deliveryAddress}
-                    onAddressClicked={() => setSummary(false)}
-                    onNameClicked={() => {
-                        setSummary(false);
-                        setAddress(false);
-                    }}
-                />}
+            {summary && <SummaryStep
+                firstName={firstName}
+                lastName={lastName}
+                email={email}
+                deliveryAddress={deliveryAddress}
+                invoiceAddress={invoiceAddress}
+                onNameClicked={() => {
+                    setAddress(false);
+                    setSummary(false);
+                }}
+                onAddressClicked={() => setSummary(false)}
+            />}
         </div>
     );
 }

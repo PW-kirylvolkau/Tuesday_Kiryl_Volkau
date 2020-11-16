@@ -1,7 +1,10 @@
 // import {combineReducers} from 'redux';
 
 const initialState = {
-    count: 0
+    count: 0,
+    boardSize: 12,
+    fieldSize: 50,
+    snakePosition: [0,0]
 };
 
 const rootReducer = (state = initialState, action) => {

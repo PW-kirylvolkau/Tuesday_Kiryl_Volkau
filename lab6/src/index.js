@@ -5,8 +5,10 @@ import {Provider} from 'react-redux'
 import getStore from './store';
 
 ReactDOM.render(
+    <React.StrictMode>
       <Provider store={getStore()} >
         <App />
-      </Provider>,
+      </Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );

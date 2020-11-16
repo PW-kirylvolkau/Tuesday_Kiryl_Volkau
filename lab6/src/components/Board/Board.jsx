@@ -7,25 +7,29 @@ function Board(props) {
 
     useEffect(() => {
         document.addEventListener("keydown", (event) => {
-            event.preventDefault();
+
             switch (event.keyCode) {
                 case keys.KEY_LEFT:
+                    event.preventDefault();
                     props.onKeyLeft();
                     break;
                 case keys.KEY_DOWN:
+                    event.preventDefault();
                     props.onKeyDown();
                     break;
                 case keys.KEY_RIGHT:
+                    event.preventDefault();
                     props.onKeyRight();
                     break;
                 case keys.KEY_UP:
+                    event.preventDefault();
                     props.onKeyUp();
                     break;
                 default:
                     break;
             }
         })
-    });
+    }, []);
 
     const boardStyle = {
         gridTemplateColumns: `${props.fieldSize}px `.repeat(props.size),
@@ -57,7 +61,7 @@ function Board(props) {
     return(
         <div>
             <h3>DIRECTION: {props.direction} </h3>
-            <div className={styles.board} style={boardStyle}>
+            <div className={styles.board} style={boardStyle} >
                 {generateBoard(props.size)}
             </div>
         </div>
@@ -79,7 +83,7 @@ const mapDispatchToProps = (dispatch) => {
         onKeyLeft: () => dispatch({type: 'LEFT'}),
         onKeyDown: () => dispatch({type: 'DOWN'}),
         onKeyRight: () => dispatch({type: 'RIGHT'}),
-        onKeyUp: () => dispatch({type: 'UP'}),
+        onKeyUp: () => dispatch({type: 'UP'})
     }
 }
 

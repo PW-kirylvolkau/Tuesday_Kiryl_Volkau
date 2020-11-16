@@ -1,7 +1,10 @@
 # Lab 6
+# NOTE : the lab was finished by 21.30, Monday 16.11.2020, Warsaw time,
 To run this app clone the code and do:
 * `npm i `
 * `npm start`
+
+
 
 ## Stages 
 1. React app connected to the `redux` store and `redux-dev-tools`. Done with sample `Counter` component, which can be simply uncommented in the `App.js` component.

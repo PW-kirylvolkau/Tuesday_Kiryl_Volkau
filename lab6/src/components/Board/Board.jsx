@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import styles from './board.module.css';
 import keys from "../../enums/keys";
+import actionTypes from "../../actions/types";
 
 function Board(props) {
 
@@ -65,7 +66,6 @@ function Board(props) {
                 {generateBoard(props.size)}
             </div>
         </div>
-
     )
 }
 
@@ -80,10 +80,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onKeyLeft: () => dispatch({type: 'LEFT'}),
-        onKeyDown: () => dispatch({type: 'DOWN'}),
-        onKeyRight: () => dispatch({type: 'RIGHT'}),
-        onKeyUp: () => dispatch({type: 'UP'})
+        onKeyLeft: () => dispatch({type: actionTypes.LEFT}),
+        onKeyDown: () => dispatch({type: actionTypes.DOWN}),
+        onKeyRight: () => dispatch({type: actionTypes.RIGHT}),
+        onKeyUp: () => dispatch({type: actionTypes.UP})
     }
 }
 

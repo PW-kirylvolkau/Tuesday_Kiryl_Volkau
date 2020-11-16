@@ -1,7 +1,7 @@
-// import {combineReducers} from 'redux';
 import directions from "../enums/directions";
-import {isNextWall, applyStep} from "../helpers/boardHelper";
+import {directionChange} from "../helpers/boardHelper";
 import step from "../enums/step";
+import actionTypes from "../actions/types";
 
 const initialState = {
     count: 0,
@@ -13,71 +13,23 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'INCR': {
+        case actionTypes.INCR: {
             return {
                 ...state,
                 count: state.count + 1
             }
         }
-        case 'UP': {
-            if(!isNextWall(state.boardSize, state.snakePosition, step.up)) {
-                return {
-                    ...state,
-                    direction: directions.up,
-                    snakePosition: applyStep(state.snakePosition, step.up)
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    direction: directions.up
-                }
-            }
+        case actionTypes.UP: {
+            return directionChange(state, directions.up, step.up);
         }
-        case 'DOWN': {
-            if(!isNextWall(state.boardSize, state.snakePosition, step.down)) {
-                return {
-                    ...state,
-                    direction: directions.down,
-                    snakePosition: applyStep(state.snakePosition, step.down)
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    direction: directions.down
-                }
-            }
+        case actionTypes.DOWN: {
+            return directionChange(state, directions.down, step.down)
         }
-        case 'RIGHT': {
-            if(!isNextWall(state.boardSize, state.snakePosition, step.right)) {
-                return {
-                    ...state,
-                    direction: directions.right,
-                    snakePosition: applyStep(state.snakePosition, step.right)
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    direction: directions.right
-                }
-            }
+        case actionTypes.RIGHT: {
+            return directionChange(state, directions.right, step.right)
         }
-        case 'LEFT': {
-            if(!isNextWall(state.boardSize, state.snakePosition, step.left)) {
-                return {
-                    ...state,
-                    direction: directions.left,
-                    snakePosition: applyStep(state.snakePosition, step.left)
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    direction: directions.left
-                }
-            }
+        case actionTypes.LEFT: {
+            return directionChange(state, directions.left, step.left)
         }
 
         default:

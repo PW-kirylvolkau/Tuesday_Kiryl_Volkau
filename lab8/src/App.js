@@ -1,9 +1,10 @@
 import React from 'react';
+import EmployeeList from "./components/EmployeeList";
 
 function App() {
   return (
     <div id="App">
-      <p>Lol</p>
+      <EmployeeList/>
     </div>
   );
 }

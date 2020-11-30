@@ -18,10 +18,15 @@ function EmployeeList(props) {
     const [employees, setEmployees] = useState(null);
 
     useEffect(()=>{
-        getAllEmployees()
-            .then(data => setEmployees(data))
-            .catch(e => alert(e));
-    });
+        if(props.updateNeeded)
+        {
+            getAllEmployees()
+                .then(data => setEmployees(data))
+                .catch(e => console.log(e));
+
+            props.setUpd(false);
+        }
+    }, [props.updateNeeded]);
 
 
     return(
@@ -43,8 +48,8 @@ function EmployeeList(props) {
                         </tr>
                         </thead>
                         <tbody>
-                        {!employees && <p className={"text-center"}>Loading...</p>}
-                        {employees && employees.map((employee, index) => {
+                        {(!employees && props.updateNeeded) && <td className={"text-danger"}>Loading...</td>}
+                        {(employees && !props.updateNeeded) && employees.map((employee, index) => {
                             return CreateEmployee(employee, index);
                         })}
                         </tbody>

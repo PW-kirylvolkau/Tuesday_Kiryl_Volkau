@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import EmployeeList from "./components/EmployeeList";
+import EmployeeForm from "./components/EmployeeForm";
 
 function App() {
+    const [needUpdate, setNeedUpdate] = useState(true);
+
   return (
     <div id="App">
-      <EmployeeList/>
+        <EmployeeForm setUpd={setNeedUpdate}/>
+        <EmployeeList setUpd={setNeedUpdate} updateNeeded={needUpdate}/>
     </div>
   );
 }

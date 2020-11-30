@@ -4,4 +4,14 @@ function getAllEmployees() {
     return fetch(BASE_URL).then(res => res.json());
 }
 
-module.exports = {getAllEmployees};
+function addEmployee(payload) {
+    return fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+}
+
+module.exports = {getAllEmployees, addEmployee};
